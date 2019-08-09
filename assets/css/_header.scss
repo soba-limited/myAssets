@@ -1,0 +1,229 @@
+header{
+  @include wrap1040();
+  @include paddingtop(50px,30px,30px);
+  @include paddingbottom(50px,30px,30px);
+  main.flex-content{
+    @include flex(space-between,center,justify,center);
+    section.logo{
+      @include basis(400px,360px,280px,0,0);
+      h1{
+        color: $base2;
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+    }
+    section.h-info{
+      @include basis3(500px,calc(100% - 430px),240px,0,10px);
+    }
+    article.info-flex{
+      @include flex(space-between,stretch,justify,stretch);
+      @media only screen and (min-width: 1366px){
+        padding-left: 30px;
+      }
+      @media only screen and (max-width: 1365px){
+        @include flex(space-between,center,justify,center);
+        -ms-flex-direction: row-reverse;
+        -webkit-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+      }
+      div.tell-wrap{
+        @include basis(calc(55% - 10px),calc(100% - 70px),calc(100% - 70px),0,0);
+        p.tell{
+          @include marugo();
+          @include fontsize(2.2rem,2rem,1.6rem);
+          line-height: 1.2;
+          span{
+            color: $main;
+            font-size: .8em;
+            padding-right: 8px;
+          }
+        }
+        p.sub{
+          font-size: 1.2rem;
+          color: $base2;
+        }
+      }
+      div.contact-button{
+        @include basis3(calc(45% - 10px),50px,50px,0,0);
+        a{
+          display: block;
+          @include flex(center,center,center,center);
+          padding:8px;
+          background-color: $main;
+          height: 100%;
+          transition: ease .3s all;
+          @media only screen and (max-width: 1365px){
+            height: 50px;
+            border-radius: 50%;
+          }
+          @media only screen and (max-width: 767px){
+            height: 50px;
+          }
+          span{
+            text-align: center;
+            color: #fff;
+            font-size: 1.6rem;
+            transition: ease .3s all;
+          }
+          &:hover{
+            background:#fff;
+            box-shadow: 0 0 0 2px $main inset;
+            span{
+              color: $main;
+            }
+          }
+        }
+      }
+    }
+    nav.global{
+      margin-top: 10px;
+      ul{
+        @include flex(space-between,flex-start,justify,start);
+        li{
+          text-align: center;
+          position: relative;
+          &::before{
+            content:"/";
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 1.6rem;
+            transform:translateX(30px);
+          }
+          &:last-of-type::before{
+            display: none;
+          }
+        }
+        a{
+          overflow-x: hidden;
+          display: block;
+          &::before{
+            @include gijibar($main,2px);
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transition: ease .3s all .3s;
+            transform-origin: left;
+            z-index: -1;
+          }
+          &::after{
+            @include gijibar($base2,2px);
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transition: ease .3s all;
+            transform-origin: left;
+            z-index: -2;
+          }
+          &:hover::before,&:hover::after{
+            transform: scaleX(1);
+          }
+        }
+        p.main{
+          font-size: 1.6rem;
+        }
+        p.sub{
+          color: $base2;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+section.sp-nav-wrap{
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  article.toggle-wrap{
+    background:$main;
+    @include flex(flex-start,center,justify,center);
+    padding:12px;
+    transform: translateY(-100%);
+    transition: ease .5s all;
+    &.on{
+      transform: translateY(0);
+      box-shadow: 0 3px 3px 0 rgba(0,0,0,.15);
+    }
+    button{
+      width: 24px;
+      height: 16px;
+      position: relative;
+      @include flex(space-between,center,justify,center)
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      &:focus{
+        outline: none;
+      }
+    }
+    div.bar{
+      width: 24px;
+      height: 2px;
+      background:#fff;
+      transition: ease .3s all;
+      transform-origin: center;
+    }
+    p.type{
+      line-height: 1;
+      color:#fff;
+      margin-left: 8px;
+      &::before{
+        content:"MENU";
+        transition: ease .3s all;
+      }
+    }
+  }
+  nav.sp-nav{
+    width: 100%;
+    background-color: rgba(255,255,255,.95);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+    transform-origin: top left;
+    transform: skewX(30deg) rotateX(90deg);
+    transition: ease .5s all;
+    ul{
+      @include flex(space-between,flex-start,justify,start);
+      padding:8px 15px;
+      @media only screen and (max-width: 767px){
+        @include flex(flex-start,flex-start,start,start);
+      }
+      li{
+        text-align: center;
+      }
+      a{
+        padding:8px 15px;
+        display: block;
+      }
+      p.main{
+        color: $main;
+      }
+      p.sub{
+        color: $base2;
+        font-size: 1.1rem;
+      }
+    }
+  }
+  &.on{
+    article.toggle-wrap{
+      div.bar{
+        &:nth-of-type(1){
+          transform: rotate(30deg) translateY(8px);
+        }
+        &:nth-of-type(2){
+          opacity: 0;
+        }
+        &:nth-of-type(3){
+          transform: rotate(-30deg) translateY(-8px);
+        }
+      }
+      p.type{
+        &::before{
+          content:"CLOSE";
+        }
+      }
+    }
+    nav.sp-nav{
+      transform: skewX(0) rotateX(0);
+    }
+  }
+}

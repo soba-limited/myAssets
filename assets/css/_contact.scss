@@ -1,0 +1,61 @@
+div.contact{
+  form{
+    @include padding2(0,50px,50px);
+    div.form_flex{
+      margin-bottom: 30px;
+      p.form_left{
+        margin-bottom: 15px;
+        span{
+          font-size: 1rem;
+          color: $main;
+        }
+      }
+      input[type="text"],textarea{
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        padding:8px;
+        &:focus{
+          outline:0;
+          border-bottom: 1px solid #000;
+        }
+      }
+    }
+    div.kiyaku{
+      height: 240px;
+      padding:30px;
+      border:1px solid #ccc;
+      overflow-y: scroll;
+      margin-bottom: 30px;
+      h3{
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      span{
+        display: block;
+        margin:10px auto;
+      }
+    }
+    div.cheack{
+      text-align: center;
+      font-size: 1.4rem;
+      input{
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+    div.send_button{
+      margin: 30px auto 0;
+      width: 100%;
+      max-width: 240px;
+      background-color: $main;
+      input{
+        color: #fff;
+        padding:8px 30px 10px;
+        text-align: center;
+        display: block;
+        font-size: 1.6rem;
+        width: 100%;
+      }
+    }
+  }
+}
